@@ -1,4 +1,13 @@
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL}
+    password: ${PASSWORD}
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
   data:
     cassandra:
       keyspace-name: main
@@ -11,10 +20,9 @@ spring:
         connect-timeout: 10s
         init-query-timeout: 10s
 datastax.astra:
-    secure-connect-bundle: secure-connect-hawk-blog.zip
+  secure-connect-bundle: secure-connect-hawk-blog.zip
 astra.db:
-    id: 90639f99-4f34-4ef1-bf97-ba162cd3aad9-1
-    region: us-east-1
-    keyspace: HAWK_BLOG
-    application.token: AstraCS:JXhKfAJCZYyjgIrZlHmGdSpl:22e517b8be781c4d22290ae4f46182bdfbd99daab16c544e0a3f4eecb0316fe3
-
+  id: 90639f99-4f34-4ef1-bf97-ba162cd3aad9-1
+  region: us-east-1
+  keyspace: HAWK_BLOG
+  application.token: AstraCS:JXhKfAJCZYyjgIrZlHmGdSpl:22e517b8be781c4d22290ae4f46182bdfbd99daab16c544e0a3f4eecb0316fe3
