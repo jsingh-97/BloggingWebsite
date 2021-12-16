@@ -15,6 +15,10 @@ import java.util.Optional;
 public class BlogController {
     @Autowired
     BlogAggregator blogAggregator;
+    @GetMapping(value="/home")
+    public String healthCheck(){
+        return "Welcome to Blogging website";
+    }
     @PostMapping(value = "/post/blog")
     public BlogResponse postBlog(@RequestBody PostBlogRequest postBlogRequest){
         return blogAggregator.postBlog(postBlogRequest);

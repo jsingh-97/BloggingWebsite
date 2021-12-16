@@ -26,3 +26,4 @@ astra.db:
   region: us-east-1
   keyspace: HAWK_BLOG
   application.token: AstraCS:JXhKfAJCZYyjgIrZlHmGdSpl:22e517b8be781c4d22290ae4f46182bdfbd99daab16c544e0a3f4eecb0316fe3
+APP_BASE_URL: ${APP_BASE_URL}
