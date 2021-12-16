@@ -1,6 +1,7 @@
 package com.DSD.HAWK.PROJECT.controllers;
 
 
+import com.DSD.HAWK.PROJECT.aggregator.Request.LoginRequest;
 import com.DSD.HAWK.PROJECT.aggregator.Request.SignUpRequest;
 import com.DSD.HAWK.PROJECT.aggregator.Response.Auth.AuthResponse;
 import com.DSD.HAWK.PROJECT.aggregator.Service.AuthAggregator;
@@ -32,14 +33,12 @@ public class AuthController {
         return "Welcome to Blog";
     }
 
-    @GetMapping("/auth/user")
-    public AuthResponse getUserDetails(
-            @RequestParam(value = "email", required = true) String email,
-            @RequestParam(value = "password", required = true) String password){
-        return authAggregator.getUserDetails(email,password);
+    @PostMapping("/auth/login")
+    public AuthResponse getUserDetails(@RequestBody LoginRequest loginRequest){
+        return authAggregator.getUserDetails(loginRequest.getEmail(),loginRequest.getPassword());
     }
 
-    @PostMapping("/auth/user")
+    @PostMapping("/auth/register")
     public AuthResponse registerUser(
             @RequestBody SignUpRequest signUpRequest){
         return authAggregator.registerUser(signUpRequest);

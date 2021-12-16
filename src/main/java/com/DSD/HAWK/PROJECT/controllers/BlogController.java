@@ -25,7 +25,7 @@ public class BlogController {
 
     }
     @GetMapping(value = "/get/myBlogs")
-    public List<Blog> getBlog(
+    public List<BlogResponse> getBlog(
             @RequestParam(value = "email",required = true)String email ){
         return blogAggregator.getAllBlogs(email);
 

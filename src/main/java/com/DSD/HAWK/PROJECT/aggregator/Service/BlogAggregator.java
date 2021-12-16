@@ -7,7 +7,7 @@ import com.DSD.HAWK.PROJECT.model.Blog;
 import java.util.List;
 
 public interface BlogAggregator {
-    List<Blog> getAllBlogs(String email);
+    List<BlogResponse> getAllBlogs(String email);
     BlogResponse postBlog(PostBlogRequest postBlogRequest);
 
 }

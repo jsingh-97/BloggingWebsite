@@ -79,7 +79,7 @@ public class AuthAggregatorImpl implements AuthAggregator {
         ConfirmationToken confirmationToken=new ConfirmationToken(token, LocalDateTime.now(),LocalDateTime.now().plusMinutes(10),null,signUpRequest.getEmail());
         confirmationTokenService.addToken(confirmationToken);
         //sending email to user
-        String link = "http://vconnect.ap-south-1.elasticbeanstalk.com:5000"+"/auth/user/confirmToken?token=" + token;
+        String link = "EMAIL=dummyjaswinder97@gmail.com;PASSWORD=test@1234;APP_BASE_URL=http://bigbull.ap-south-1.elasticbeanstalk.com:5000"+"/auth/user/confirmToken?token=" + token;
         try {
             emailSender.send(signUpRequest.getEmail(),buildEmail(signUpRequest.getName(),link));
         }catch (Exception ex){

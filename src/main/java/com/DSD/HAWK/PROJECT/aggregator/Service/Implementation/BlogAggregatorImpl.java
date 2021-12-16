@@ -8,6 +8,7 @@ import com.DSD.HAWK.PROJECT.repository.Service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,9 +17,11 @@ public class BlogAggregatorImpl implements BlogAggregator {
     @Autowired
     BlogService blogService;
     @Override
-    public List<Blog> getAllBlogs(String email) {
-
-        return blogService.getAllBlogs(email);
+    public List<BlogResponse> getAllBlogs(String email) {
+        List<BlogResponse> ls = new ArrayList<>();
+        List<Blog> blogs = blogService.getAllBlogs(email);
+        blogs.stream().forEach(blog -> ls.add(new BlogResponse(blog.getId(),blog.getEmail(),blog.getBlogTitle(), blog.getBlogBody())));
+        return ls;
     }
 
     @Override
@@ -27,7 +30,7 @@ public class BlogAggregatorImpl implements BlogAggregator {
         Blog newBlog = new Blog(id,postBlogRequest.getEmail(),postBlogRequest.getBlogTitle(),postBlogRequest.getBlogBody());
         blogService.postBlog(newBlog);
         BlogResponse blogResponse = new BlogResponse();
-        blogResponse.setBody("Blog uploaded successfully");
+        blogResponse.setContent("Blog uploaded successfully");
         return blogResponse;
     }
 }

@@ -9,15 +9,19 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class BlogService {
     @Autowired
     BlogRepository blogRepository;
 
     public List<Blog> getAllBlogs(String email){
-        List blogList = new ArrayList();
-        blogList = blogRepository.findAllById(Arrays.asList(email));
-        return blogList;
+        List<Blog> blogList = new ArrayList();
+        blogList = blogRepository.findAll();
+        List<Blog> ls = new ArrayList<>();
+        ls = blogList.stream().filter(blog -> blog.getEmail().equals(email)).collect(Collectors.toList());
+        return ls;
     }
     public void postBlog(Blog blog){
         try {
