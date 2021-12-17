@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter@Setter
 public class PostBlogRequest {
     private String email;
-    private String blogTitle;
-    private String blogBody;
+    private String title;
+    private String content;
 }

@@ -27,7 +27,7 @@ public class BlogAggregatorImpl implements BlogAggregator {
     @Override
     public BlogResponse postBlog(PostBlogRequest postBlogRequest) {
         String id = UUID.randomUUID().toString();
-        Blog newBlog = new Blog(id,postBlogRequest.getEmail(),postBlogRequest.getBlogTitle(),postBlogRequest.getBlogBody());
+        Blog newBlog = new Blog(id,postBlogRequest.getEmail(),postBlogRequest.getTitle(),postBlogRequest.getContent());
         blogService.postBlog(newBlog);
         BlogResponse blogResponse = new BlogResponse();
         blogResponse.setContent("Blog uploaded successfully");
