@@ -1,3 +1,3 @@
 # BloggingWebsite
 
-Build Backend of Blogging website using Cassandra as a database
+Developed backend of Blogging website using Cassandra as a database
